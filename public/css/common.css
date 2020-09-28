@@ -1,0 +1,22 @@
+h2{
+    color: lightcoral
+}
+.header{
+    text-align: center
+}
+li{
+    float: left
+}
+ul{
+    list-style-type: none;
+    background-color: limegreen;
+    margin: auto;
+    overflow: hidden;
+}
+li a{
+    display: block;
+    color: black;
+    text-align:center;
+    padding: 14px 16px;
+    font-size: 16px
+}
