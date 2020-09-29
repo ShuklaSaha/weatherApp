@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geoCodeAPI = require('../utils/geocode-api')
 const weatherAPI = require('../utils/weather-api')
+const port=process.env.PORT || 3000
 const app = express()
 console.log('Current dir:', __dirname)
 
@@ -40,7 +41,7 @@ app.get('/weather', (req, res) => {
             error: 'You must provide an address'
         })
     else {
-        geoCodeAPI.geocode(req.query.address, (error, { longitude, latitude, place }) => {
+        geoCodeAPI.geocode(req.query.address, (error, { longitude, latitude, place }={}) => {
             if (error)
                 res.send({error})
             else {
@@ -48,7 +49,7 @@ app.get('/weather', (req, res) => {
                     if (error)
                         res.send({error})
                     else {
-                        res.render('weather', {
+                        res.send({
                             title: 'Weather Description',
                             location: place,
                             description: body
@@ -63,6 +64,6 @@ app.get('/weather', (req, res) => {
 app.get('*', (req, res) => {
     res.send('<h3 style="color:red">404 Page Not Found</h3>')
 })
-app.listen(3000, () => {
-    console.log('server started at port 3000')
+app.listen(port, () => {
+    console.log('server started at port'+port)
 })

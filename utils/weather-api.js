@@ -10,10 +10,10 @@ const weatherReport = (latitude, longitude,callback) => {
     },
         (error, {body}) => {
             if (error)
-                return callback('error occured to call weatherstack api',undefined)
+                return callback('Error occured to call weatherstack api',undefined)
             else
                 return callback(undefined,{
-                    body:'It is currently ' + body.current.temperature + ' degrees out.There is ' + body.current.precip + 'mm of rain today.'
+                    body: body.current.weather_descriptions[0]+'.It is currently ' + body.current.temperature + ' degrees out.There is ' + body.current.precip + 'mm of rain today.'
                 })
 
         })

@@ -7,9 +7,9 @@ const geocode = (location, callback) => {
     },
         (error, {body}) => { 
             if (error)
-                callback('error occured to call geocode api', undefined)
+                callback('Error occured to call geocode api', undefined)
             else if (body.features.length === 0) {
-                callback('unable to find the location.', undefined)
+                callback('Unable to find the location.', undefined)
             } else {
                 callback(undefined,{
                     longitude: body.features[0].center[0],
